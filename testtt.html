@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+  
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contactless App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script> 
+    
+        
+        window.onload = function(e){            
+     
+            let URL = "https://script.google.com/macros/s/AKfycbwAehxg7C88hTOaKG_WbifKjZh5v4xuE9SdRFd1dPk1cpVHmeo9ZL0d4QAkFMZ8CH7KoA/exec";
+            document.getElementById('iframemain').src = URL;
+           refresh();
+        }   
+
+
+    var time = new Date().getTime();
+
+     // $(document.body).bind("mousemove keypress", function(e) {
+     //     time = new Date().getTime();
+     //     console.log(time);
+
+     // });
+
+       $(document).mousemove(function ()
+                    {
+                      time = new Date().getTime();
+                      
+                    })
+
+     function refresh() {
+console.log(new Date().getTime() - time);
+         if(new Date().getTime() - time >= 60000) {
+            // alert("test");
+              window.location.reload(true);
+         document.getElementById('iframemain').src = "";
+            let URL = "https://script.google.com/macros/s/AKfycbwAehxg7C88hTOaKG_WbifKjZh5v4xuE9SdRFd1dPk1cpVHmeo9ZL0d4QAkFMZ8CH7KoA/exec";
+            document.getElementById('iframemain').src = URL;
+        }
+         else {
+             setTimeout(refresh, 10000);
+         }
+           
+     }
+
+     setTimeout(refresh, 10000);
+
+
+
+     // $(document).mousemove(function ()
+     //                {
+     //                  alert('The mouse was touched');
+     //                })
+    </script>
+    
+</head>
+  
+<body style="height:100%; display:flex; margin:0px;">  
+<iframe id= "iframemain" src="" width="100%" height="" style="border:none;"></iframe>
+</body>
+</html>
+
+
+
